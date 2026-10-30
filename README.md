@@ -30,4 +30,4 @@ Never commit passwords, tokens or API keys.
 
 ## Screenshots
 ![Workflow]([screenshots/workflow-canvas.png](https://github.com/yogesharumugam54/n8n-email-auto-reply/blob/main/Screenshot%202026-10-27%20215037.png?raw=true))
-![Successful run](screenshots/successful-run.png)
+![Successful run]([screenshots/successful-run.png](https://github.com/yogesharumugam54/n8n-email-auto-reply/blob/main/Screenshot%202026-10-27%20214955.png?raw=true))
