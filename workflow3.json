@@ -1,0 +1,119 @@
+{
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "filters": {
+          "q": "in:inbox -from:me -from:noreply -from:no-reply -from:mailer-daemon -label:auto-replied"
+        }
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        16
+      ],
+      "id": "5a4c12a2-6352-4711-96a7-4b9ab95fface",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "1hZmd7D8gNbN7PvV",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "reply",
+        "messageId": "={{ $json.id }}",
+        "emailType": "text",
+        "message": "Hello,  Thank you for contacting Acme Support. We have received your email and our team will get back to you as soon as we can.  Kind regards, Acme Support Team  This is an automated message. Please do not reply to this email.",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        416,
+        -16
+      ],
+      "id": "e88b9e81-83ce-40cc-9cbe-6b428076abb8",
+      "name": "Reply to a message",
+      "webhookId": "ecee1ad7-e4c1-41a1-ab6a-9541ca194d3f",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "1hZmd7D8gNbN7PvV",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "addLabels",
+        "messageId": "={{ $('Gmail Trigger').first().json.id }}",
+        "labelIds": [
+          "Label_5525772764047849220"
+        ]
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        592,
+        -16
+      ],
+      "id": "410839ed-6ab1-489c-a8eb-c887c2f5c8e2",
+      "name": "Add label to message",
+      "webhookId": "c10dd4c3-bf87-48fa-bee0-43dce9a57782",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "1hZmd7D8gNbN7PvV",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "Reply to a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reply to a message": {
+      "main": [
+        [
+          {
+            "node": "Add label to message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "e1be249b-609c-4273-b941-5f6173c52b71",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "62322ed5de61cc0dfd3beb79d12a353e862db2b38c0c82a833738587af1bf084"
+  },
+  "nodeGroups": [],
+  "id": "YkhUqLUlboGiNCG5",
+  "tags": []
+}
