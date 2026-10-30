@@ -29,5 +29,5 @@ Never commit passwords, tokens or API keys.
 - Add more sender exclusions in the trigger's search filter.
 
 ## Screenshots
-![Workflow](screenshots/workflow-canvas.png)
+![Workflow]([screenshots/workflow-canvas.png](https://github.com/yogesharumugam54/n8n-email-auto-reply/blob/main/Screenshot%202026-10-27%20215037.png?raw=true))
 ![Successful run](screenshots/successful-run.png)
